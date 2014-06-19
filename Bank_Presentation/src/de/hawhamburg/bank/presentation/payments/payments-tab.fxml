@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.cell.*?> 
+<?import javafx.collections.*?>
+<?import de.hawhamburg.bank.presentation.payments.FormattedTableCellFactory?>
+
+<Tab text="Payments" fx:id="paymentsTab" fx:controller="de.hawhamburg.bank.presentation.payments.PaymentsController" xmlns:fx="http://javafx.com/fxml">
+    <content>
+		<GridPane alignment="CENTER" hgap="10.0" vgap="10.0">
+		    <padding>
+		        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+		    </padding>
+		    <Label style="-fx-font: NORMAL 20 Tahoma;" text="Credit Card Payments by Customers" GridPane.columnIndex="0" GridPane.rowIndex="0">
+		    </Label>
+		    <TableView fx:id="payments" GridPane.columnIndex="0" GridPane.rowIndex="1">
+			     <columns>
+			          <TableColumn fx:id="customer" text="Customer">
+			               <cellValueFactory><PropertyValueFactory property="customerName" /></cellValueFactory>
+			          </TableColumn>
+			          <TableColumn fx:id="creditCard" text="Credit Card">
+			               <cellValueFactory><PropertyValueFactory property="creditCardNo" /></cellValueFactory>
+			          </TableColumn>
+			          <TableColumn text="Payment">
+			          	<columns>
+				          <TableColumn fx:id="paymentDate" text="Date">
+				               <cellValueFactory><PropertyValueFactory property="paymentDate" /></cellValueFactory>
+     							<cellFactory>
+     								<FormattedTableCellFactory alignment="right" formatDescription="DATE_TIME"/>
+     							</cellFactory>
+				          </TableColumn>
+			          	</columns>
+			          </TableColumn>
+			     </columns>   
+			</TableView>
+			<HBox GridPane.columnIndex="0" GridPane.rowIndex="2" spacing="10">
+           		<Button text="Previous page" fx:id="previousPage" onAction="#selectPreviousPayments"/>
+           		<Button text="Refresh" onAction="#refreshPayments"/>
+           		<Button text="Delete selected payment" fx:id="deleteSelected" onAction="#deleteSelectedPayment"/>
+           	</HBox>
+			<Label text="..." GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+			<TextArea fx:id="message" editable="false" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+		</GridPane>
+    </content>
+</Tab>

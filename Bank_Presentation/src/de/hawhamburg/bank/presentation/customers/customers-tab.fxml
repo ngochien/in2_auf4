@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<Tab text="Customers" fx:id="customersTab" fx:controller="de.hawhamburg.bank.presentation.customers.CustomersController" xmlns:fx="http://javafx.com/fxml">
+    <content>
+        <AnchorPane id="customersTab">
+            <VBox AnchorPane.topAnchor="10" AnchorPane.leftAnchor="10" spacing="10">
+                	<HBox>
+		                    <Label text="Filter criteria"/>
+                	</HBox>
+                	<HBox>
+		                    <Label text="Name:" prefWidth="100"/>
+        		            <TextField fx:id="name"/>
+                	</HBox>
+                	<HBox>
+		                    <Label text="Postcode:" prefWidth="100"/>
+        		            <TextField fx:id="postcode"/>
+                	</HBox>
+                	<HBox>
+		                    <Label text="Bank:" prefWidth="100"/>
+        		            <ChoiceBox fx:id="bank"/>
+                	</HBox>
+                	<HBox>
+		                    <Label text="Credit Card Type:" prefWidth="100"/>
+        		            <ChoiceBox fx:id="cctype"/>
+                	</HBox>
+                	<HBox spacing="10">
+                		<Button text="Filter Customers" onAction="#selectCustomers"/>
+                		<Button text="Delete Customers" onAction="#deleteCustomers"/>
+                	</HBox>
+                	<HBox>
+		                    <Label text="..."/>
+        		            <TextArea fx:id="message" editable="false"/>
+                	</HBox>
+            </VBox>
+        </AnchorPane>
+    </content>
+</Tab>

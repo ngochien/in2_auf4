@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<Tab text="Customer" fx:id="customerTab" fx:controller="de.hawhamburg.bank.presentation.customer.CustomerController" xmlns:fx="http://javafx.com/fxml">
+    <content>
+        <AnchorPane id="customerTab">
+            <VBox AnchorPane.topAnchor="10" AnchorPane.leftAnchor="10" spacing="10">
+                	<HBox>
+		                    <Label text="Name:" prefWidth="100"/>
+        		            <TextField fx:id="name" promptText="Customer name"/>
+                	</HBox>
+                	<HBox>
+		                    <Label text="Postcode:" prefWidth="100"/>
+        		            <TextField fx:id="postcode" promptText="Postcode"/>
+                	</HBox>
+                	<HBox>
+		                    <Label text="City:" prefWidth="100"/>
+        		            <TextField fx:id="city" promptText="City"/>
+                	</HBox>
+                	<HBox>
+		                    <Label text="Street:" prefWidth="100"/>
+        		            <TextField fx:id="street" promptText="Street"/>
+                	</HBox>
+                	<HBox>
+		                    <Label text="Bank:" prefWidth="100"/>
+        		            <ChoiceBox fx:id="bank">
+        		            </ChoiceBox>
+                	</HBox>
+                	<HBox>
+		                    <Label text="Add Credit Card?" prefWidth="100"/>
+        		            <CheckBox fx:id="isCC" allowIndeterminate="false" onAction="#toggleCC"/>
+                	</HBox>
+                	<HBox>
+		                    <Label text="Number:" prefWidth="100"/>
+        		            <TextField fx:id="ccnumber" promptText="Credit card number" disable="true"/>
+                	</HBox>
+                	<HBox>
+		                    <Label text="Type:" prefWidth="100"/>
+        		            <ChoiceBox fx:id="cctype" disable="true"/>
+                	</HBox>
+                	<HBox>
+                		<Button text="Create Customer" onAction="#createCustomer"/>
+                	</HBox>
+                	<HBox>
+		                    <Label text="..."/>
+        		            <TextArea fx:id="message" editable="false"/>
+                	</HBox>
+            </VBox>
+        </AnchorPane>
+    </content>
+</Tab>

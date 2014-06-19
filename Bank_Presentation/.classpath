@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Bank_Persistence"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Bank_Services"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Libs"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaFX"/>
+	<classpathentry kind="lib" path="/media/sda6/@Studium/Bachelor/BWI/Informationssystem 2/Praktikum/Aufgabe4/jfxrt.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
