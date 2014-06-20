@@ -10,19 +10,23 @@
             <VBox AnchorPane.topAnchor="10" AnchorPane.leftAnchor="10" spacing="10">
                 	<HBox>
 		                    <Label text="Name:" prefWidth="100"/>
-        		            <TextField fx:id="name" promptText="Customer name"/>
+        		            <TextField fx:id="name" text="Hien"/>
+                	</HBox>
+                	<HBox>
+		                    <Label text="Surname:" prefWidth="100"/>
+        		            <TextField fx:id="surname" text="Le"/>
                 	</HBox>
                 	<HBox>
 		                    <Label text="Postcode:" prefWidth="100"/>
-        		            <TextField fx:id="postcode" promptText="Postcode"/>
+        		            <TextField fx:id="postcode" text="21109"/>
                 	</HBox>
                 	<HBox>
 		                    <Label text="City:" prefWidth="100"/>
-        		            <TextField fx:id="city" promptText="City"/>
+        		            <TextField fx:id="city" text="Hamburg"/>
                 	</HBox>
                 	<HBox>
 		                    <Label text="Street:" prefWidth="100"/>
-        		            <TextField fx:id="street" promptText="Street"/>
+        		            <TextField fx:id="street" text="Berliner Tor"/>
                 	</HBox>
                 	<HBox>
 		                    <Label text="Bank:" prefWidth="100"/>
@@ -35,11 +39,15 @@
                 	</HBox>
                 	<HBox>
 		                    <Label text="Number:" prefWidth="100"/>
-        		            <TextField fx:id="ccnumber" promptText="Credit card number" disable="true"/>
+        		            <TextField fx:id="ccnumber" text="1234567890" disable="true"/>
                 	</HBox>
                 	<HBox>
 		                    <Label text="Type:" prefWidth="100"/>
         		            <ChoiceBox fx:id="cctype" disable="true"/>
+                	</HBox>
+                	<HBox>
+		                    <Label text="Card Issuer" prefWidth="100"/>
+        		            <ChoiceBox fx:id="cardIssuer" disable="true"/>
                 	</HBox>
                 	<HBox>
                 		<Button text="Create Customer" onAction="#createCustomer"/>

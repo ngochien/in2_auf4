@@ -32,12 +32,19 @@
      								<FormattedTableCellFactory alignment="right" formatDescription="DATE_TIME"/>
      							</cellFactory>
 				          </TableColumn>
+				          <TableColumn fx:id="paymentAmount" text="Amount">
+				               <cellValueFactory><PropertyValueFactory property="paymentAmount" /></cellValueFactory>
+     							<cellFactory>
+     								<FormattedTableCellFactory alignment="right" formatDescription="CURRENCY"/>
+     							</cellFactory>
+				          </TableColumn>
 			          	</columns>
 			          </TableColumn>
 			     </columns>   
 			</TableView>
 			<HBox GridPane.columnIndex="0" GridPane.rowIndex="2" spacing="10">
            		<Button text="Previous page" fx:id="previousPage" onAction="#selectPreviousPayments"/>
+           		<Button text="Next page" fx:id="nextPage" onAction="#selectNextPayments"/>
            		<Button text="Refresh" onAction="#refreshPayments"/>
            		<Button text="Delete selected payment" fx:id="deleteSelected" onAction="#deleteSelectedPayment"/>
            	</HBox>

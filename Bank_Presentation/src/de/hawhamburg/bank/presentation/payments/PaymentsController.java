@@ -42,9 +42,15 @@ public class PaymentsController {
 
 	@FXML
 	private TableColumn<PaymentView, Date> paymentDate;
+	
+	@FXML
+	private TableColumn<PaymentView, Long> paymentAmount;
 
 	@FXML
 	private Button previousPage;
+	
+	@FXML
+	private Button nextPage;
 
 	@FXML
 	private Button deleteSelected;
@@ -70,8 +76,8 @@ public class PaymentsController {
 	private void initializeColumns() {
 		customer.prefWidthProperty().bind(payments.widthProperty().divide(4));
 		creditCard.prefWidthProperty().bind(payments.widthProperty().divide(4));
-		paymentDate.prefWidthProperty()
-				.bind(payments.widthProperty().divide(4));
+		paymentDate.prefWidthProperty().bind(payments.widthProperty().divide(4));
+		paymentAmount.prefWidthProperty().bind(payments.widthProperty().divide(4));
 	}
 
 	@FXML
@@ -81,6 +87,13 @@ public class PaymentsController {
 		if (this.firstPayment < 0) {
 			this.firstPayment = 0;
 		}
+		selectPayments();
+	}
+	
+	@FXML
+	protected void selectNextPayments(final ActionEvent event) {
+		LOG.info("selecting next payments ...");
+		this.firstPayment += NUMBER_OF_PAYMENTS_PER_PAGE;
 		selectPayments();
 	}
 

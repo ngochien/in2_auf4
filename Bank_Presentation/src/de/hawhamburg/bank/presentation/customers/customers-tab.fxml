@@ -27,6 +27,10 @@
 		                    <Label text="Credit Card Type:" prefWidth="100"/>
         		            <ChoiceBox fx:id="cctype"/>
                 	</HBox>
+                	<HBox>
+		                    <Label text="Card Issuer:" prefWidth="100"/>
+        		            <ChoiceBox fx:id="cardIssuer"/>
+                	</HBox>
                 	<HBox spacing="10">
                 		<Button text="Filter Customers" onAction="#selectCustomers"/>
                 		<Button text="Delete Customers" onAction="#deleteCustomers"/>

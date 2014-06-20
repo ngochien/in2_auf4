@@ -44,12 +44,16 @@ public class CustomersController {
 	private ChoiceBox<CreditCardType> cctype;
 
 	@FXML
+	private ChoiceBox<CardIssuer> cardIssuer;
+	
+	@FXML
 	private TextArea message;
 
 	@FXML
 	private void initialize() {
 		LOG.info("initializing ...");
 		initializeBank();
+		initializeCardIssuer();
 		initializeCctype();
 		LOG.info("... done");
 	}
@@ -73,6 +77,30 @@ public class CustomersController {
 		cctypeObs.addAll(CreditCardType.values());
 		cctype.setItems(cctypeObs);
 		cctype.getSelectionModel().select(0);
+	}
+	
+	private void initializeCardIssuer() {
+		cardIssuer.setConverter(new StringConverter<CardIssuer>() {
+
+			@Override
+			public String toString(final CardIssuer issuer) {
+				return issuer == null ? "Select .." : issuer.getName();
+			}
+
+			@Override
+			public CardIssuer fromString(final String string) {
+				return null;
+			}
+		});
+		final ObservableList<CardIssuer> cardIssuerObs = FXCollections
+				.observableArrayList();
+		final ServiceProvider serviceProvider = ServiceProvider.getInstance();
+		final BankService bankService = serviceProvider.getBankService();
+		final List<CardIssuer> cardIssuers = bankService.getCardIssuers();
+		cardIssuerObs.add(null);
+		cardIssuerObs.addAll(cardIssuers);
+		cardIssuer.setItems(cardIssuerObs);
+		cardIssuer.getSelectionModel().select(0);
 	}
 
 	private void initializeBank() {
@@ -132,6 +160,7 @@ public class CustomersController {
 		filter.setPostcode(normalize(this.postcode.getText()));
 		filter.setBank(this.bank.getValue());
 		filter.setCcType(this.cctype.getValue());
+		filter.setCcIssuer(this.cardIssuer.getValue());
 		return filter;
 	}
 

@@ -35,6 +35,9 @@ public class CustomerController {
 
 	@FXML
 	private TextField name;
+	
+	@FXML
+	private TextField surname;
 
 	@FXML
 	private TextField postcode;
@@ -56,6 +59,9 @@ public class CustomerController {
 
 	@FXML
 	private ChoiceBox<CreditCardType> cctype;
+	
+	@FXML
+	private ChoiceBox<CardIssuer> cardIssuer;
 
 	@FXML
 	private TextArea message;
@@ -65,6 +71,7 @@ public class CustomerController {
 		LOG.info("initializing ...");
 		initializeBank();
 		initializeCctype();
+		initializeCardIssuer();
 		LOG.info("... done");
 	}
 
@@ -75,6 +82,30 @@ public class CustomerController {
 		cctype.setItems(cctypeObs);
 	}
 
+	private void initializeCardIssuer() {
+		cardIssuer.setConverter(new StringConverter<CardIssuer>() {
+
+			@Override
+			public String toString(final CardIssuer issuer) {
+				return issuer == null ? "Select .." : issuer.getName();
+			}
+
+			@Override
+			public CardIssuer fromString(final String string) {
+				return null;
+			}
+		});
+		final ObservableList<CardIssuer> cardIssuerObs = FXCollections
+				.observableArrayList();
+		final ServiceProvider serviceProvider = ServiceProvider.getInstance();
+		final BankService bankService = serviceProvider.getBankService();
+		final List<CardIssuer> cardIssuers = bankService.getCardIssuers();
+		cardIssuerObs.add(null);
+		cardIssuerObs.addAll(cardIssuers);
+		cardIssuer.setItems(cardIssuerObs);
+		cardIssuer.getSelectionModel().select(0);
+	}
+	
 	private void initializeBank() {
 		bank.setConverter(new StringConverter<Bank>() {
 
@@ -125,12 +156,14 @@ public class CustomerController {
 		final CreditCard creditCard = new CreditCard();
 		creditCard.setNumber(ccnumber.getText());
 		creditCard.setType(cctype.getValue());
+		creditCard.setIssuer(cardIssuer.getValue());
 		return creditCard;
 	}
 
 	private Customer buildCustomer() {
 		final Customer customer = new Customer();
 		customer.setName(name.getText());
+		customer.setSurname(surname.getText());
 		final Address address = new Address();
 		address.setStreet(street.getText());
 		address.setPostcode(postcode.getText());
@@ -145,6 +178,7 @@ public class CustomerController {
 		LOG.info("toggling ...");
 		ccnumber.setDisable(!isCC.isSelected());
 		cctype.setDisable(!isCC.isSelected());
+		cardIssuer.setDisable(!isCC.isSelected());
 		LOG.info("... toggled");
 	}
 }
